@@ -1,0 +1,55 @@
+.dashboardContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.dashboardTodoWrapper {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboardTodoWrapperDetails {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.dashboardTodoWrapperInput {
+  width: 80%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(14, 14, 26, 0.763);
+}
+
+.dashboardTodoListWrapper {
+  width: 100%;
+  height: auto;
+  padding: 20px 0px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: auto auto auto;
+  column-gap: 50px;
+  row-gap: 50px;
+}
+
+@media (max-width: 1030px) {
+  .dashboardTodoListWrapper {
+    grid-template-columns: auto auto;
+  }
+}
+@media (max-width: 680px) {
+  .dashboardTodoListWrapper {
+    grid-template-columns: auto;
+  }
+}
