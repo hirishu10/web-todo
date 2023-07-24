@@ -1,7 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import {
   addTodoNote,
-  fetchTodoNotes,
   setAuthenticate,
   setLoginUserDetailsName,
   setLoginUserDetailsEmail,
@@ -71,10 +70,6 @@ const actionCombined = createReducer(INITIAL_STATE, (builder) => {
 
   builder.addCase(deleteTodoNote, (state, action) => {
     return state;
-  });
-
-  builder.addCase(fetchTodoNotes, (state, action) => {
-    return { ...state, todoData: action.payload };
   });
 
   builder.addCase(setTodo, (state, action) => {

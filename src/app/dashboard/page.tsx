@@ -3,7 +3,6 @@
 import TodoCard from "@/components/TodoCard";
 import { auth, dbAuth } from "../../../firebase";
 import * as firebaseAuth from "firebase/auth";
-import Image from "next/image";
 import React, { useCallback, useEffect } from "react";
 import { customDispatch, customSelector } from "../../../reduxHook/hook";
 import { useRouter } from "next/navigation";
@@ -99,8 +98,12 @@ export default function Dashboard() {
         <React.Fragment>
           <div className={styles.dashboardTodoWrapper}>
             <div className={styles.dashboardTodoWrapperDetails}>
-              <Image
-                src={auth.currentUser?.photoURL?.toString()}
+              <img
+                src={
+                  auth.currentUser?.photoURL === undefined
+                    ? "/user.png"
+                    : auth.currentUser?.photoURL?.toString()
+                }
                 alt="icon"
                 width={40}
                 height={40}

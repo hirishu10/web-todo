@@ -2,7 +2,6 @@ import {
   SIGNUP_LOGIN,
   ADD_TODO,
   DELETE_TODO,
-  FETCH_TODO,
   UPDATE_TODO,
   AUTHENTICATE,
   CHECK_USER,
@@ -138,39 +137,6 @@ const deleteTodoNote = createAction(DELETE_TODO, (todoID) => {
   };
 });
 
-const fetchTodoNotes = createAction(FETCH_TODO, () => {
-  const mainCollection = firestore.collection(dbAuth, "users");
-  const mainDocument = firestore.doc(
-    mainCollection,
-    auth?.currentUser?.email?.toString()
-  );
-
-  const childCollection = firestore.collection(mainDocument, "todo");
-
-  const queryDocument = firestore.query(childCollection);
-
-  let allDocs: any = [];
-  firestore.onSnapshot(queryDocument, {
-    next: (res) => {
-      res?.docs?.forEach((item, index) => {
-        console.log("item " + index, item?.data()?.data);
-        allDocs.push({
-          data: item?.data()?.data,
-          timeStamp: item?.data()?.timeStamp,
-        });
-      });
-
-      console.log("allDocs", allDocs);
-    },
-
-    complete: () => {},
-  });
-
-  return {
-    payload: allDocs,
-  };
-});
-
 const setTodo = createAction(GET_TODO, (todo: string) => {
   return {
     payload: todo,
@@ -195,5 +161,4 @@ export {
   addTodoNote,
   updateTodoNote,
   deleteTodoNote,
-  fetchTodoNotes,
 };
